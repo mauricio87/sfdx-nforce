@@ -22,7 +22,7 @@ $ npm install -g sfdx-nforce
 $ sfdx-nforce COMMAND
 running command...
 $ sfdx-nforce (-v|--version|version)
-sfdx-nforce/0.0.3 darwin-x64 node-v9.5.0
+sfdx-nforce/0.1.0 darwin-x64 node-v9.5.0
 $ sfdx-nforce --help [COMMAND]
 USAGE
   $ sfdx-nforce COMMAND
@@ -57,7 +57,7 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.3/src/commands/nforce.ts)_
+_See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce.ts)_
 
 ## `sfdx-nforce nforce:org [FILE]`
 
@@ -85,7 +85,7 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [src/commands/nforce/org.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.3/src/commands/nforce/org.ts)_
+_See code: [src/commands/nforce/org.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/org.ts)_
 
 ## `sfdx-nforce nforce:profiles:fix`
 
@@ -107,7 +107,7 @@ EXAMPLES
   $ sfdx nforce:profiles:fix -n SystemProfile
 ```
 
-_See code: [src/commands/nforce/profiles/fix.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.3/src/commands/nforce/profiles/fix.ts)_
+_See code: [src/commands/nforce/profiles/fix.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/profiles/fix.ts)_
 
 ## `sfdx-nforce nforce:profiles:retrieve`
 
@@ -130,7 +130,7 @@ EXAMPLES
   $ sfdx nforce:profiles:retrieve -n SystemProfile
 ```
 
-_See code: [src/commands/nforce/profiles/retrieve.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.3/src/commands/nforce/profiles/retrieve.ts)_
+_See code: [src/commands/nforce/profiles/retrieve.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/profiles/retrieve.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
