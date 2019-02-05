@@ -1,7 +1,7 @@
 {
   "name": "sfdx-nforce",
   "description": "Plugin that enhances sfdx. Most of the comands will be deprecated as DX matures.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Mauricio DelRey",
   "bugs": "https://github.com/https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/issues",
   "dependencies": {

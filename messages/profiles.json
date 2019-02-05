@@ -1,0 +1,7 @@
+{
+  "fix-commandDescription": "Run Operations against profiles",
+  "fix-nameFlagDescription": "name to print",
+  "fix-noProfileFound": "The profile specified does not exist '%s'.",
+  "retrieve-commandDescription": "Run Operations against profiles",
+  "retrieve-nameFlagDescription": "name to print"
+}

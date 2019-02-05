@@ -22,7 +22,7 @@ $ npm install -g sfdx-nforce
 $ sfdx-nforce COMMAND
 running command...
 $ sfdx-nforce (-v|--version|version)
-sfdx-nforce/0.0.1 darwin-x64 node-v9.5.0
+sfdx-nforce/0.0.2 darwin-x64 node-v9.5.0
 $ sfdx-nforce --help [COMMAND]
 USAGE
   $ sfdx-nforce COMMAND
@@ -30,15 +30,42 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx-nforce hello:org [FILE]`](#sfdx-nforce-helloorg-file)
+* [`sfdx-nforce nforce`](#sfdx-nforce-nforce)
+* [`sfdx-nforce nforce:org [FILE]`](#sfdx-nforce-nforceorg-file)
+* [`sfdx-nforce nforce:profiles:fix`](#sfdx-nforce-nforceprofilesfix)
+* [`sfdx-nforce nforce:profiles:retrieve`](#sfdx-nforce-nforceprofilesretrieve)
 
-## `sfdx-nforce hello:org [FILE]`
+## `sfdx-nforce nforce`
 
 print a greeting and your org IDs
 
 ```
 USAGE
-  $ sfdx-nforce hello:org [FILE]
+  $ sfdx-nforce nforce
+
+OPTIONS
+  -f, --force                                     example boolean flag
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+
+EXAMPLES
+  $ sfdx hello:org --targetusername myOrg@example.com --targetdevhubusername devhub@org.com
+     Hello world! This is org: MyOrg and I will be around until Tue Mar 20 2018!
+     My hub org id is: 00Dxx000000001234
+  
+  $ sfdx hello:org --name myname --targetusername myOrg@example.com
+     Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
+```
+
+_See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce.ts)_
+
+## `sfdx-nforce nforce:org [FILE]`
+
+print a greeting and your org IDs
+
+```
+USAGE
+  $ sfdx-nforce nforce:org [FILE]
 
 OPTIONS
   -f, --force                                      example boolean flag
@@ -58,7 +85,51 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [src/commands/hello/org.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.1/src/commands/hello/org.ts)_
+_See code: [src/commands/nforce/org.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/org.ts)_
+
+## `sfdx-nforce nforce:profiles:fix`
+
+Run Operations against profiles
+
+```
+USAGE
+  $ sfdx-nforce nforce:profiles:fix
+
+OPTIONS
+  -n, --name=name                                 name to print
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+
+EXAMPLES
+  $ sfdx nforce:profiles:fix
+  $ sfdx nforce:profiles:fix -n SystemProfile
+```
+
+_See code: [src/commands/nforce/profiles/fix.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/profiles/fix.ts)_
+
+## `sfdx-nforce nforce:profiles:retrieve`
+
+Run Operations against profiles
+
+```
+USAGE
+  $ sfdx-nforce nforce:profiles:retrieve
+
+OPTIONS
+  -n, --name=name                                 name to print
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+
+EXAMPLES
+  $ sfdx nforce:profiles:retrieve
+  $ sfdx nforce:profiles:retrieve -n SystemProfile
+```
+
+_See code: [src/commands/nforce/profiles/retrieve.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/profiles/retrieve.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
