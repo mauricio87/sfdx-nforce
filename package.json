@@ -10,8 +10,11 @@
     "@oclif/errors": "1",
     "@salesforce/command": "^1.0.1",
     "@salesforce/core": "^1.0.1",
+    "json-merge-patch": "^0.2.3",
+    "puppeteer": "^1.11.0",
     "tslib": "1"
   },
+
   "devDependencies": {
     "@oclif/dev-cli": "^1",
     "@oclif/plugin-help": "^2",
@@ -45,8 +48,8 @@
   "oclif": {
     "commands": "./lib/commands",
     "topics": {
-      "hello": {
-        "description": "Commands to say hello."
+      "nforce": {
+        "description": "Enhance SFDX with commands that are missing or should work"
       }
     },
     "devPlugins": [

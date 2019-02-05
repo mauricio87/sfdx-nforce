@@ -36,23 +36,13 @@ export default class Fix extends SfdxCommand {
 
     public async run(): Promise<AnyJson> {
         
-        //let comandResult;
-        
         // query for the profiles
-        let profiles = await profileHelper.getProfiles(this.org.getConnection(), this.flags.name);
+        let profiles = await profileHelper.getProfiles(this.org, this.flags.name);
 
         this.ux.log(`We found ${profiles.length} profiles.`);
         this.ux.log(`Starting to clean profiles.`);
 
-        for(const profile of profiles)
-        {
-            this.ux.startSpinner(`Cleaning ${profile.Name}.`);
-
-            //let result =  
-            await profileHelper.cleanProfiles(this.org.getConnection(), profile.Id);
-
-            this.ux.stopSpinner();
-        }
+        await profileHelper.cleanProfiles(this.org, this.ux, profiles);
 
         // Return an object to be displayed with --json
         return { };
