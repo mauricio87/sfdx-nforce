@@ -2,9 +2,9 @@ import { core, flags, SfdxCommand } from '@salesforce/command';
 import { AnyJson } from '@salesforce/ts-types';
 import fs = require('fs-extra');
 import path = require('path');
-//import profileHelper = require('../../../shared/profileTools'); 
 import child_process = require('child_process');
 import util = require('util');
+import profileHelper = require('../../../shared/profileTools'); 
 
 const exec = util.promisify(child_process.exec);
 
@@ -26,7 +26,8 @@ export default class Retrieve extends SfdxCommand {
 
     protected static flagsConfig = {
         // flag with a value (-n, --name=VALUE)
-        name: flags.string({ char: 'n', description: messages.getMessage('retrieve-nameFlagDescription') })
+        name: flags.string({ char: 'n', description: messages.getMessage('retrieve-nameFlagDescription') }),
+        clean: flags.boolean({ char: 'c', description: messages.getMessage('retrieve-cleanFlagDescription') })
     };
 
     // Comment this out if your command does not require an org username
@@ -40,7 +41,14 @@ export default class Retrieve extends SfdxCommand {
 
     public async run(): Promise<AnyJson> {
         
-        this.ux.startSpinner(`Retrieving profiles.`);
+        // Do we need to clean profiles?
+        if (this.flags.clean) {
+            let profiles = await profileHelper.getProfiles(this.org, this.flags.name);
+
+            await profileHelper.cleanProfiles(this.org, this.ux, profiles);
+        }
+
+        this.ux.startSpinner(`Retrieving profile(s).`);
 
         var baseDir = './.tmp/profiles'; 
         var convertDir = baseDir + '/convert';

@@ -35,7 +35,7 @@ export default class Fix extends SfdxCommand {
     protected static requiresProject = false;
 
     public async run(): Promise<AnyJson> {
-        
+
         // query for the profiles
         let profiles = await profileHelper.getProfiles(this.org, this.flags.name);
 

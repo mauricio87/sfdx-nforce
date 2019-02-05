@@ -118,6 +118,7 @@ USAGE
   $ sfdx-nforce nforce:profiles:retrieve
 
 OPTIONS
+  -c, --clean                                     Run clean on the profile(s)
   -n, --name=name                                 name to print
   -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
   --apiversion=apiversion                         override the api version used for api requests made by this command
