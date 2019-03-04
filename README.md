@@ -31,6 +31,8 @@ USAGE
 <!-- usagestop -->
 <!-- commands -->
 * [`sfdx-nforce nforce`](#sfdx-nforce-nforce)
+* [`sfdx-nforce nforce:auth:connectapp:create`](#sfdx-nforce-nforceauthconnectappcreate)
+* [`sfdx-nforce nforce:auth:user:create`](#sfdx-nforce-nforceauthusercreate)
 * [`sfdx-nforce nforce:org [FILE]`](#sfdx-nforce-nforceorg-file)
 * [`sfdx-nforce nforce:profiles:fix`](#sfdx-nforce-nforceprofilesfix)
 * [`sfdx-nforce nforce:profiles:retrieve`](#sfdx-nforce-nforceprofilesretrieve)
@@ -58,6 +60,59 @@ EXAMPLES
 ```
 
 _See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce.ts)_
+
+## `sfdx-nforce nforce:auth:connectapp:create`
+
+Create a connected app in your scratch org
+
+```
+USAGE
+  $ sfdx-nforce nforce:auth:connectapp:create
+
+OPTIONS
+  -c, --calbackurl=calbackurl                     Url for callback (default will be sfdx://success
+  -d, --description=description                   Description of the connected app that you want to create
+  -l, --label=label                               Label of the connected app that you want to create
+  -n, --name=name                                 (required) Name of the connected app that you want to create
+  -s, --scopes=scopes                             Scopes that you want to use. (comma delimited)
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  -w, --cert                                      Create an register cert
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+
+EXAMPLES
+  $ sfdx nforce:auth:connectapp:create -n "Connected App Name"
+     Creating app....
+     App created, Id: {}
+  $ sfdx nforce:auth:connectapp:create -n "Connected App Name" -l "My label" -w -c "https://somethignelse.com", -s 
+  "Api,web"
+     Creating app....
+     App created, Id: {}
+```
+
+_See code: [src/commands/nforce/auth/connectapp/create.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/auth/connectapp/create.ts)_
+
+## `sfdx-nforce nforce:auth:user:create`
+
+Create an user with role and authenticate app.
+
+```
+USAGE
+  $ sfdx-nforce nforce:auth:user:create
+
+OPTIONS
+  -a, --auth                                      Authenticat user to app ?
+  -c, --newapp                                    create a new app ?
+  -f, --definitionfile=definitionfile             file path to a user definition
+  -n, --appname=appname                           name o the app that you want to use to log-in
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+```
+
+_See code: [src/commands/nforce/auth/user/create.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/auth/user/create.ts)_
 
 ## `sfdx-nforce nforce:org [FILE]`
 

@@ -11,3 +11,4 @@ sfdx-project.json
 .sfdx
 npm-shrinkwrap.json
 oclif.manifest.json
+/certs

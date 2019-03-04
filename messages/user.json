@@ -1,0 +1,7 @@
+{
+  "user-create-description": "Create an user with role and authenticate app.",
+  "user-create-definitionFile-flag":"file path to a user definition",
+  "user-create-appname-flag": "name o the app that you want to use to log-in",
+  "user-create-app-flag": "create a new app ?",
+  "user-create-auth-flag": "Authenticat user to app ?"
+}
