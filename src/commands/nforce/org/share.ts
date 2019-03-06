@@ -1,28 +1,29 @@
 import { core, flags, SfdxCommand } from '@salesforce/command';
 import { AnyJson } from '@salesforce/ts-types';
-import profileHelper = require('../../../shared/profileTools'); 
+//import profileHelper = require('../../../shared/profileTools'); 
+//import { Org } from '@salesforce/core';
 
 // Initialize Messages with the current plugin directory
 core.Messages.importMessagesDirectory(__dirname);
 
 // Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
 // or any library that is using the messages framework can also be loaded this way.
-const messages = core.Messages.loadMessages('sfdx-nforce', 'profiles');
+const messages = core.Messages.loadMessages('sfdx-nforce', 'org');
 
-export default class Fix extends SfdxCommand {
+export default class share extends SfdxCommand {
 
-    public static description = messages.getMessage('fix-commandDescription');
+    public static description = messages.getMessage('share-commandDescription');
 
     public static examples = [
-        `$ sfdx nforce:profiles:fix`,
-        `$ sfdx nforce:profiles:fix -n SystemProfile`
+        `$ sfdx nforce:org:share`,
+        `$ sfdx nforce:org:share -u -a`
     ];
 
-    //public static args = [{ name: 'file' }];
-
     protected static flagsConfig = {
-        // flag with a value (-n, --name=VALUE)
-        name: flags.string({ char: 'n', description: messages.getMessage('fix-nameFlagDescription') })
+        // flag with a value (-u, --url)
+        url: flags.string({ char: 'u', description: messages.getMessage('share-urlFlagDescription') }),
+        // flag with a value (-a, --all)
+        all: flags.string({ char: 'a', description: messages.getMessage('share-allFlagDescription') }),
     };
 
     // Comment this out if your command does not require an org username
@@ -36,13 +37,11 @@ export default class Fix extends SfdxCommand {
 
     public async run(): Promise<AnyJson> {
 
-        // query for the profiles
-        let profiles = await profileHelper.getProfiles(this.org, this.flags.name);
+        //const results = await AuthInfo.getAuthorizationUrl(options);
+        const conn = await  this.org.getConnection().getConnectionOptions();
+        const frontDoorUrl = `${conn.instanceUrl}secur/frontdoor.jsp?sid=${conn.accessToken}`;
 
-        this.ux.log(`We found ${profiles.length} profiles.`);
-        this.ux.log(`Starting to clean profiles.`);
-
-        await profileHelper.cleanProfiles(this.org, this.ux, profiles);
+        this.ux.log(`This URL is live please share with Caution: ${frontDoorUrl}`); 
 
         // Return an object to be displayed with --json
         return { };

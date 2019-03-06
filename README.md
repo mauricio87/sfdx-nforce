@@ -22,7 +22,7 @@ $ npm install -g sfdx-nforce
 $ sfdx-nforce COMMAND
 running command...
 $ sfdx-nforce (-v|--version|version)
-sfdx-nforce/0.0.2 darwin-x64 node-v9.5.0
+sfdx-nforce/0.1.0 darwin-x64 node-v8.9.4
 $ sfdx-nforce --help [COMMAND]
 USAGE
   $ sfdx-nforce COMMAND
@@ -31,7 +31,9 @@ USAGE
 <!-- usagestop -->
 <!-- commands -->
 * [`sfdx-nforce nforce`](#sfdx-nforce-nforce)
-* [`sfdx-nforce nforce:org [FILE]`](#sfdx-nforce-nforceorg-file)
+* [`sfdx-nforce nforce:auth:connectapp:create`](#sfdx-nforce-nforceauthconnectappcreate)
+* [`sfdx-nforce nforce:auth:user:create`](#sfdx-nforce-nforceauthusercreate)
+* [`sfdx-nforce nforce:org:share`](#sfdx-nforce-nforceorgshare)
 * [`sfdx-nforce nforce:profiles:fix`](#sfdx-nforce-nforceprofilesfix)
 * [`sfdx-nforce nforce:profiles:retrieve`](#sfdx-nforce-nforceprofilesretrieve)
 
@@ -57,35 +59,83 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce.ts)_
+_See code: [src/commands/nforce.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce.ts)_
 
-## `sfdx-nforce nforce:org [FILE]`
+## `sfdx-nforce nforce:auth:connectapp:create`
 
-print a greeting and your org IDs
+Create a connected app in your scratch org
 
 ```
 USAGE
-  $ sfdx-nforce nforce:org [FILE]
+  $ sfdx-nforce nforce:auth:connectapp:create
 
 OPTIONS
-  -f, --force                                      example boolean flag
-  -n, --name=name                                  name to print
-  -u, --targetusername=targetusername              username or alias for the target org; overrides default target org
-  -v, --targetdevhubusername=targetdevhubusername  username or alias for the dev hub org; overrides default dev hub org
-  --apiversion=apiversion                          override the api version used for api requests made by this command
-  --json                                           format output as json
-  --loglevel=(trace|debug|info|warn|error|fatal)   logging level for this command invocation
+  -c, --calbackurl=calbackurl                     Url for callback (default will be sfdx://success
+  -d, --description=description                   Description of the connected app that you want to create
+  -l, --label=label                               Label of the connected app that you want to create
+  -n, --name=name                                 (required) Name of the connected app that you want to create
+  -s, --scopes=scopes                             Scopes that you want to use. (comma delimited)
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  -w, --cert                                      Create an register cert
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
 
 EXAMPLES
-  $ sfdx hello:org --targetusername myOrg@example.com --targetdevhubusername devhub@org.com
-     Hello world! This is org: MyOrg and I will be around until Tue Mar 20 2018!
-     My hub org id is: 00Dxx000000001234
-  
-  $ sfdx hello:org --name myname --targetusername myOrg@example.com
-     Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
+  $ sfdx nforce:auth:connectapp:create -n "Connected App Name"
+     Creating app....
+     App created, Id: {}
+  $ sfdx nforce:auth:connectapp:create -n "Connected App Name" -l "My label" -w -c "https://somethignelse.com", -s 
+  "Api,web"
+     Creating app....
+     App created, Id: {}
 ```
 
-_See code: [src/commands/nforce/org.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/org.ts)_
+_See code: [src/commands/nforce/auth/connectapp/create.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/auth/connectapp/create.ts)_
+
+## `sfdx-nforce nforce:auth:user:create`
+
+Create an user with role and authenticate app.
+
+```
+USAGE
+  $ sfdx-nforce nforce:auth:user:create
+
+OPTIONS
+  -a, --auth                                      Authenticat user to app ?
+  -c, --newapp                                    create a new app ?
+  -f, --definitionfile=definitionfile             file path to a user definition
+  -n, --appname=appname                           name o the app that you want to use to log-in
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+```
+
+_See code: [src/commands/nforce/auth/user/create.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/auth/user/create.ts)_
+
+## `sfdx-nforce nforce:org:share`
+
+Sends an email with your org information.
+
+```
+USAGE
+  $ sfdx-nforce nforce:org:share
+
+OPTIONS
+  -a, --all=all                                   test
+  -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
+  -u, --url=url                                   test
+  --apiversion=apiversion                         override the api version used for api requests made by this command
+  --json                                          format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal)  logging level for this command invocation
+
+EXAMPLES
+  $ sfdx nforce:org:share
+  $ sfdx nforce:org:share -u -a
+```
+
+_See code: [src/commands/nforce/org/share.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/org/share.ts)_
 
 ## `sfdx-nforce nforce:profiles:fix`
 
@@ -107,7 +157,7 @@ EXAMPLES
   $ sfdx nforce:profiles:fix -n SystemProfile
 ```
 
-_See code: [src/commands/nforce/profiles/fix.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/profiles/fix.ts)_
+_See code: [src/commands/nforce/profiles/fix.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/profiles/fix.ts)_
 
 ## `sfdx-nforce nforce:profiles:retrieve`
 
@@ -118,6 +168,7 @@ USAGE
   $ sfdx-nforce nforce:profiles:retrieve
 
 OPTIONS
+  -c, --clean                                     Run clean on the profile(s)
   -n, --name=name                                 name to print
   -u, --targetusername=targetusername             username or alias for the target org; overrides default target org
   --apiversion=apiversion                         override the api version used for api requests made by this command
@@ -129,7 +180,7 @@ EXAMPLES
   $ sfdx nforce:profiles:retrieve -n SystemProfile
 ```
 
-_See code: [src/commands/nforce/profiles/retrieve.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.0.2/src/commands/nforce/profiles/retrieve.ts)_
+_See code: [src/commands/nforce/profiles/retrieve.ts](https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/blob/v0.1.0/src/commands/nforce/profiles/retrieve.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin

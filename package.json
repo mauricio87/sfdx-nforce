@@ -1,7 +1,7 @@
 {
   "name": "sfdx-nforce",
   "description": "Plugin that enhances sfdx. Most of the comands will be deprecated as DX matures.",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Mauricio DelRey",
   "bugs": "https://github.com/https://github.com/mauricio87/https://github.com/mauricio87/sfdx-nforce/issues",
   "dependencies": {
@@ -10,6 +10,9 @@
     "@oclif/errors": "1",
     "@salesforce/command": "^1.0.1",
     "@salesforce/core": "^1.0.1",
+    "json-merge-patch": "^0.2.3",
+    "puppeteer": "^1.11.0",
+    "node-forge": "^0.8.0",
     "tslib": "1"
   },
   "devDependencies": {
@@ -20,6 +23,7 @@
     "@types/chai": "^4",
     "@types/mocha": "^5",
     "@types/node": "^10",
+    "@types/node-forge": "^0.7.11",
     "chai": "^4",
     "globby": "^8",
     "mocha": "^5",
@@ -45,8 +49,8 @@
   "oclif": {
     "commands": "./lib/commands",
     "topics": {
-      "hello": {
-        "description": "Commands to say hello."
+      "nforce": {
+        "description": "Enhance SFDX with commands that are missing or should work"
       }
     },
     "devPlugins": [
