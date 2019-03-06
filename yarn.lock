@@ -2379,10 +2379,6 @@ redeyed@~2.1.0:
   dependencies:
     esprima "~4.0.0"
 
-reflect-metadata@^0.1.12:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
-
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/regex-not/-/regex-not-1.0.2.tgz#1f4ece27e00b0b65e0247a6810e6a85d83a5752c"
@@ -2532,13 +2528,6 @@ sfdx-faye@^1.0.9:
     faye-websocket "~0.9.1"
     tough-cookie "~2.4.3"
     tunnel-agent "~0.6.0"
-
-sfdx-js@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/sfdx-js/-/sfdx-js-4.5.0.tgz#12eef487a7232c685216188e93c29839f024038a"
-  dependencies:
-    reflect-metadata "^0.1.12"
-    underscore "^1.9.1"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -2976,10 +2965,6 @@ uglify-js@^3.1.4:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
-
-underscore@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
 
 union-value@^1.0.0:
   version "1.0.0"

@@ -52,8 +52,8 @@ export default class Retrieve extends SfdxCommand {
 
         var baseDir = './.tmp/profiles'; 
         var convertDir = baseDir + '/convert';
-        var sourecDir = baseDir + '/source';
-        var sourecDirProfiles = sourecDir + '/unpackaged/profiles/';
+        var sourceDir = baseDir + '/source';
+        var sourceDirProfiles = sourceDir + '/unpackaged/profiles/';
         var cleanDir = baseDir + '/clean';
         var profileDir = cleanDir + '/profiles';
         var sourceProfileDir = './force-app/main/default/profiles/'
@@ -61,7 +61,7 @@ export default class Retrieve extends SfdxCommand {
 
         //Create or empty temp folders
         fs.emptyDirSync(convertDir);
-        fs.emptyDirSync(sourecDir);
+        fs.emptyDirSync(sourceDir);
         fs.emptyDirSync(profileDir);
 
         //run a convert so we can get a clean package.xml
@@ -69,13 +69,13 @@ export default class Retrieve extends SfdxCommand {
         await exec(`sfdx force:source:convert -d ${convertDir}`);
 
         // use package.xml from retrieve call
-        await exec(`sfdx force:mdapi:retrieve -k ${convertDir}/package.xml -r ${sourecDir}`);
+        await exec(`sfdx force:mdapi:retrieve -k ${convertDir}/package.xml -r ${sourceDir}`);
 
         // unzip source
-        await exec(`unzip  ${sourecDir}/unpackaged.zip -d ${sourecDir}`);
+        await exec(`unzip  ${sourceDir}/unpackaged.zip -d ${sourceDir}`);
 
         // move files
-        fs.moveSync(sourecDirProfiles, profileDir, {overwrite: true});
+        fs.moveSync(sourceDirProfiles, profileDir, {overwrite: true});
         
 
         // rename files
